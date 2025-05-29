@@ -5,7 +5,7 @@
         Casual,
         OnlineBracket,
         OfflineBracket,
-        RegionalTournament,
+        Regional,
         Major
 
     }
