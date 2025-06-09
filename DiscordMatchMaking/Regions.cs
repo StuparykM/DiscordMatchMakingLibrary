@@ -604,7 +604,7 @@ namespace DiscordMatchMaking
         RS,
 
         [Description("Seychelles")]
-        SC,
+        SC
 
     }
 }

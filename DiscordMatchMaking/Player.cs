@@ -17,7 +17,7 @@ namespace DiscordMatchMaking
         private int _losses;
         private int _rankingScore;
         private DateOnly _creationDate;
-        private bool _isAdmin;
+        private bool _isAdmin = false;
         #endregion
 
         #region Properties
