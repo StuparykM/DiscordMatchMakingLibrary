@@ -27,6 +27,7 @@ namespace DiscordMatchMaking
                 {
                     throw new ArgumentNullException("Must provide a username");
                 }
+                _userName = value;
             }
         }
 
@@ -46,6 +47,7 @@ namespace DiscordMatchMaking
         #endregion
 
         #region Methods
+
         #endregion
 
         #region Construtor

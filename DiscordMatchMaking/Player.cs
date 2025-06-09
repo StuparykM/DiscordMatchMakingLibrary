@@ -11,7 +11,7 @@ namespace DiscordMatchMaking
 
         #region Data Members
         private List<UserName> _userNames = new();
-        public IReadOnlyList<UserName> UserNames => _userNames.AsReadOnly();
+        public IReadOnlyList<UserName> UserNameList => _userNames.AsReadOnly();
         private Regions _region;
         private int _wins;
         private int _losses;
@@ -21,6 +21,19 @@ namespace DiscordMatchMaking
         #endregion
 
         #region Properties
+
+        public List<UserName> UserNames
+        {
+            get
+            {
+                return _userNames;
+            }
+            set
+            {
+                _userNames = value;
+            }
+        }
+
         public Regions Region
         {
             get
@@ -103,7 +116,42 @@ namespace DiscordMatchMaking
 
         }
 
-        
+
+        #endregion
+
+        #region Methods
+
+        public void AddUserName(string userName)
+        {
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                throw new ArgumentNullException("Username is required");
+                
+            }
+
+            if (UserNames.Any(u => u.UserNames.Equals(userName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new InvalidOperationException("This username already exists for this player.");
+            }
+
+            UserNames.Add(new UserName(userName));
+        }
+        public void SetPrimaryUserName(UserName selectedPrimary)
+        {
+            if (!UserNames.Contains(selectedPrimary))
+            {
+                throw new InvalidOperationException("Username does not belong to this user");
+            }
+
+            foreach(var name in UserNames)
+            {
+                name.Primary = false;
+            }
+
+            selectedPrimary.Primary = true;
+        }
+
+
         #endregion
     }
 }
