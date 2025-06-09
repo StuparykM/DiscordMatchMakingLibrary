@@ -138,10 +138,6 @@ namespace DiscordMatchMaking
         }
         public void SetPrimaryUserName(UserName selectedPrimary)
         {
-            if (!UserNames.Contains(selectedPrimary))
-            {
-                throw new InvalidOperationException("Username does not belong to this user");
-            }
 
             foreach(var name in UserNames)
             {
